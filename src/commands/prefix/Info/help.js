@@ -7,7 +7,7 @@ module.exports = {
     structure: {
         name: 'help',
         description: 'View all the possible commands!',
-        aliases: ['h'],
+        aliases: ['h', 'ajuda', 'commands', 'comandos'],
         cooldown: 15000
     },
     /**
@@ -37,8 +37,8 @@ module.exports = {
                 new EmbedBuilder()
                     .setTitle('Help command')
                     .addFields(
-                        { name: 'Slash commands', value: `${mapIntCmds.join('\n')}` },
-                        { name: 'Prefix commands', value: `${mapPreCmds.join('\n')}` }
+                        { name: `${client.emoji.slash} Slash commands`, value: `${mapIntCmds.join('\n')}` },
+                        { name: `${client.emoji.message} Comandos de mensagem`, value: `${mapPreCmds.join('\n')}` }
                     )
             ]
         });
