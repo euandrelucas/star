@@ -1,0 +1,28 @@
+{
+    "env": {
+      "browser": false,
+      "node": true,
+      "es2021": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 13,
+      "sourceType": "module"
+    },
+    "rules": {
+      "indent": ["warn", "tab", {
+        "SwitchCase": 1
+      }],
+      "no-undef": ["error"],
+      "no-unused-vars": ["warn", {
+        "args": "none",
+        "caughtErrors": "none"
+      }],
+      "no-mixed-spaces-and-tabs": ["warn"],
+      "no-const-assign": ["error"],
+      "semi": ["warn", "never"],
+      "no-unreachable": ["error"],
+      "no-console": ["warn"],
+      "no-async-promise-executor": 0
+    },
+    "extends": "eslint:recommended"
+}

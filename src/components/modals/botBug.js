@@ -1,7 +1,7 @@
 const config = require('../../config')
 
 module.exports = {
-	customId: 'bot;sug',
+	customId: 'bot;bug',
 	/**
      * 
      * @param {ExtendedClient} client 
@@ -12,17 +12,17 @@ module.exports = {
 		const title = interaction.fields.getTextInputValue('sug;title')
 		const description = interaction.fields.getTextInputValue('sug;description')
 
-		const channel = await client.channels.cache.get(config.supportServer.suggestion.channel)
+		const channel = await client.channels.cache.get(config.supportServer.bug.channel)
 
 		await channel.threads.create({
 			name: title,
 			message: {
-				content: `# ${title}\n- Sugestão de: ${interaction.user.tag} (${interaction.user.id})\n## Sugestão:\n${description}`
+				content: `# ${title}\n- Bug reportado por: ${interaction.user.tag} (${interaction.user.id})\n## Bug:\n${description}`
 			},
-			appliedTags: [config.supportServer.suggestion.tagID],
+			appliedTags: [config.supportServer.bug.tagID],
 		}).then(async (ch) => {
 			await interaction.reply({
-				content: `${client.emoji.check} **|** Sua sugestão foi enviada para nossa equipe! (<#${ch.id}>)`,
+				content: `${client.emoji.check} **|** Seu bug foi enviada para nossa equipe! (<#${ch.id}>)`,
 				ephemeral: true
 			})
 		})
