@@ -5,6 +5,12 @@ module.exports = {
     token: process.env.CLIENT_ID,
     id: process.env.CLIENT_ID,
   },
+  supportServer: {
+    suggestion: {
+      channel: '1172121827187900457',
+      tagID: '1172122221251137556'
+    }
+  },
   handler: {
     prefix: "s!",
     deploy: true,

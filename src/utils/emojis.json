@@ -1,6 +1,8 @@
 {
     "error": "<:StError:1171915588558393426>",
+    "check": "✅",
     "slash": "<:StSlash:1171929876140392488>",
     "message": "<:StMessage:1171931786633298030>",
-    "qrcode": "<:StQrcode:1171936337780289606>"
+    "qrcode": "<:StQrcode:1171936337780289606>",
+    "barcode": "<:StBarcode:1172114230082805821>"
 }

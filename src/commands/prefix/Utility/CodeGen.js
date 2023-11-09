@@ -15,16 +15,16 @@ module.exports = {
      * @param {string[]} args 
      */
     run: async (client, message, args) => {
-        const type = args[0];
+        const type = args[0].toLowerCase();
  
         switch (type) {
             case 'qrcode': {
                 if (!args[1]) return message.reply({
-                    content: `${client.emoji.error} **|** Você precisa inserir o \`URL\` ou \`TEXTO\` para gerar o QR code.`
+                    content: `${client.emoji.error} **|** Você precisa inserir o \`URL\` ou \`TEXTO\` para gerar o código QR.`
                 })
 
                 const QRCode = require('qrcode')
-                const qr = await QRCode.toBuffer(args.join(' '), {
+                const qr = await QRCode.toBuffer(args.slice(1).join(' '), {
                     scale: 10
                 })
                 const attachment = new AttachmentBuilder(Buffer.from(qr, 'base64'), {
@@ -42,23 +42,34 @@ module.exports = {
                 break;
             }
 
-            case 'reset': {
-                let data = await GuildSchema.findOne({ guild: message.guildId });
+            case 'barcode': {
+                if (!args[1]) return message.reply({
+                    content: `${client.emoji.error} **|** Você precisa inserir o \`TEXTO\` para gerar o código de barras.`
+                })
 
-                if (data) {
-                    await GuildSchema.deleteOne({ guild: message.guildId });
-                }
-
-                await message.reply({
-                    content: `The new prefix on this server is: \`${config.handler.prefix}\` (default).`
-                });
+                const Barcode = require('jsbarcode')
+                const canvas = require('canvas')
+                const Canvas = canvas.createCanvas(400, 200)
+                const ctx = Canvas.getContext('2d')
+                Barcode(Canvas, args.slice(1).join(' '))
+                const attachment = new AttachmentBuilder(Canvas.toBuffer(), {
+                    name: 'barcode.png'
+                })
+                const embed = new EmbedBuilder()
+                .setTitle(`${client.emoji.barcode} Código de Barras`)
+                .setColor('#8e00ff')
+                .setImage('attachment://barcode.png')
+                message.reply({
+                    embeds: [embed],
+                    files: [attachment]
+                })
 
                 break;
             }
 
             default: {
                 await message.reply({
-                    content: 'Allowed methods: `set`, `reset`'
+                    content: `${client.emoji.error} **|** Você precisa escolher entre \`QRCODE\` ou \`BARCODE\` para gerar o código.`
                 });
 
                 break;

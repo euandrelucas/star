@@ -10,9 +10,10 @@ module.exports = {
      * @param {import('discord.js').Client<true>} client 
      * @returns 
      */
-    run: (_, client) => {
+    run: async (_, client) => {
 
         log('Logged in as: ' + client.user.tag, 'done');
 
+        await client.db.connect()
     }
 };
