@@ -21,7 +21,7 @@ module.exports = class extends Client {
 
 	constructor() {
 		super({
-			intents: [Object.keys(GatewayIntentBits)],
+			intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildInvites, GatewayIntentBits.GuildEmojisAndStickers, GatewayIntentBits.GuildMessageTyping, GatewayIntentBits.DirectMessages, GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.DirectMessageTyping],
 			partials: [Object.keys(Partials)],
 			presence: {
 				activities: [{
