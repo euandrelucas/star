@@ -1,4 +1,8 @@
-FROM node:20
+FROM ubuntu:22.04
+
+# NodeJS & Chromium for tests
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
+RUN apt install -y nodejs
 
 # Create app directory
 WORKDIR /usr/src/app
