@@ -13,12 +13,12 @@ WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package.json ./
-COPY yarn.lock ./
+COPY pacakge-lock.json ./
 
-RUN yarn install --production --frozen-lockfile
+RUN npm install
 
 # Bundle app source
 COPY . .
 
 # Start command
-CMD [ "yarn", "prod" ]
+CMD [ "npm", "run", "prod" ]
