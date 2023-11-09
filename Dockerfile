@@ -10,9 +10,8 @@ ENV LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libjemalloc.so"
 # Install app dependencies
 COPY package.json yarn.lock ./
 
-RUN yarn --production
-RUN yarn add bufferutil abalabahaha/erlpack zlib-sync@0.1
+RUN yarn install --production --frozen-lockfile
 
 COPY . .
 
-CMD [ "npm", "run", "prod" ]
+CMD [ "yarn", "prod" ]
