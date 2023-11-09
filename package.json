@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node --optimize_for_size --expose-gc --gc-interval=100 .",
     "lint": "eslint --ext .js --ignore-path .gitignore --fix .",
-    "prod": "node --optimize_for_size --expose-gc --gc-interval=100 ."
+    "prod": "LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so.2 node --optimize_for_size --expose-gc --gc-interval=100 ."
   },
   "keywords": [],
   "author": "ADG",
