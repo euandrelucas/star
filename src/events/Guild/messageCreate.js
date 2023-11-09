@@ -2,7 +2,6 @@ const { ChannelType, Message } = require("discord.js")
 const config = require("../../config")
 const { log } = require("../../functions")
 const GuildSchema = require("../../schemas/GuildSchema")
-const ExtendedClient = require("../../class/ExtendedClient")
 
 const cooldown = new Map()
 
