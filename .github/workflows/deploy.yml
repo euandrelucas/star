@@ -34,6 +34,6 @@ jobs:
       - name: Stopping container
         run: ssh prod 'bash -i -c "docker rm --force starbot"'
       - name: Starting container
-        run: ssh prod 'bash -i -c "docker run --add-host=mongoservice:127.0.0.1 --hostname goten -d --restart always --network=adg-network --cpuset-cpus=0-5 --memory="16g" --name starbot starcorp/bot"'
+        run: ssh prod 'bash -i -c "docker run --add-host=mongoservice:172.18.0.1 --hostname goten -d --restart always --network=adg-network --cpuset-cpus=0-5 --memory="16g" --name starbot starcorp/bot"'
       - name: Clear docker cache
         run: docker system prune -a --force
