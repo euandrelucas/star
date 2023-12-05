@@ -13,7 +13,9 @@ client.db.on("ready", () => {
 	log("Connected to the database", "done")
 })
 
-client.start()
+client.start().then(async () => {
+	await client.db.connect()
+})
 
 // Handles errors and avoids crashes, better to not remove them.
 process.on('unhandledRejection', console.error)

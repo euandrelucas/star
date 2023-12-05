@@ -14,6 +14,5 @@ module.exports = {
 
 		log('Logged in as: ' + client.user.tag, 'done')
 
-		await client.db.connect()
 	}
 }
