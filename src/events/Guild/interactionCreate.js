@@ -13,6 +13,27 @@ module.exports = {
    * @returns
    */
 	run: async (client, interaction) => {
+		if (interaction.isButton()) {
+			if (interaction.customId.startsWith('fav;')) {
+				const name = interaction.customId.split(';')[1]
+				console.log(name)
+				const url = await client.db.get(`nsfw-${name}`)
+				const favorites = await client.db.get(`favNsfw-${interaction.user.id}`) || []
+				favorites.push(url)
+				await client.db.set(`favNsfw-${interaction.user.id}`, favorites)
+				return interaction.reply({ content: `${client.emoji.check} **|** Favoritado com sucesso!`, ephemeral: true })
+			} else if (interaction.customId.startsWith('unfav;')) {
+				const url = interaction.customId.split(';')[1]
+				const favorites = await client.db.get(`favNsfw-${interaction.user.id}`) || []
+				const index = favorites.indexOf(url)
+				if (index > -1) {
+					favorites.splice(index, 1)
+				}
+				await client.db.set(`favNsfw-${interaction.user.id}`, favorites)
+				return interaction.reply({ content: `${client.emoji.check} **|** Desfavoritado com sucesso!`, ephemeral: true })
+			}
+		}
+
 		if (!interaction.isCommand()) return
 
 		if (
@@ -70,7 +91,7 @@ module.exports = {
 				}
 			}
 
-			if (command.options?.nsfw && !interaction.channel.nsfw) {
+			if (command.options?.nsfw && !interaction.channel.nsfw && !config.users.developers.includes(interaction.user.id)) {
 				await interaction.reply({
 					content:
             config.messageSettings.nsfwMessage !== undefined &&

@@ -4,5 +4,7 @@
     "slash": "<:StSlash:1171929876140392488>",
     "message": "<:StMessage:1171931786633298030>",
     "qrcode": "<:StQrcode:1171936337780289606>",
-    "barcode": "<:StBarcode:1172114230082805821>"
+    "barcode": "<:StBarcode:1172114230082805821>",
+    "nsfw": "🚫",
+    "favorite": "<:StFavorite:1181683273999585383>"
 }

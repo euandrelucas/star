@@ -10,11 +10,9 @@ module.exports = {
      * @param {import('discord.js').Interaction} interaction 
      * @returns 
      */
-	run: (client, interaction) => {
+	run: async (client, interaction) => {
 		if (interaction.isButton()) {
-			const component = client.collection.components.buttons.get(interaction.customId)
-
-			if (!component) return
+			let component = client.collection.components.buttons.get(interaction.customId)
 
 			try {
 				component.run(client, interaction)

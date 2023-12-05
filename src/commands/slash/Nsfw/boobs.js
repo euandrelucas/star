@@ -6,19 +6,19 @@ const config = require('../../../config')
 
 module.exports = {
 	structure: new SlashCommandBuilder()
-		.setName("4k")
+		.setName("boobs")
 		.setDescription("Nsfw command."),
 	options: {
 		nsfw: true,
 	},
 	run: async (client, interaction) => {
 		await interaction.deferReply()
-		const response = await fetch('https://nekobot.xyz/api/image?type=4k')
+		const response = await fetch('https://nekobot.xyz/api/image?type=boobs')
 		const data = await response.json()
 		let image = data.message
 
 		while (image.endsWith('.gif')) {
-			const newResponse = await fetch('https://nekobot.xyz/api/image?type=4k')
+			const newResponse = await fetch('https://nekobot.xyz/api/image?type=boobs')
 			const newData = await newResponse.json()
 			image = newData.message
 		}
@@ -47,7 +47,7 @@ module.exports = {
 		})
 
 		const embed = new EmbedBuilder()
-			.setTitle(`${client.emoji.nsfw} Imagem +18 (4K)`)
+			.setTitle(`${client.emoji.nsfw} Imagem +18 (Peitos)`)
 			.setColor('Blurple')
 			.setImage('attachment://boobs' + type)
 

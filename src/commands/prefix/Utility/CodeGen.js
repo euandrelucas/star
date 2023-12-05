@@ -15,6 +15,10 @@ module.exports = {
      * @param {string[]} args 
      */
 	run: async (client, message, args) => {
+		if (!args[1]) return message.reply({
+			content: `${client.emoji.error} **|** Você precisa inserir o tipo \`QRCODE\` ou \`BARCODE\` para gerar o código.`
+		})
+
 		const type = args[0].toLowerCase()
  
 		switch (type) {

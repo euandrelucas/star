@@ -6,19 +6,19 @@ const config = require('../../../config')
 
 module.exports = {
 	structure: new SlashCommandBuilder()
-		.setName("4k")
+		.setName("ass")
 		.setDescription("Nsfw command."),
 	options: {
 		nsfw: true,
 	},
 	run: async (client, interaction) => {
 		await interaction.deferReply()
-		const response = await fetch('https://nekobot.xyz/api/image?type=4k')
+		const response = await fetch('https://nekobot.xyz/api/image?type=ass')
 		const data = await response.json()
 		let image = data.message
 
 		while (image.endsWith('.gif')) {
-			const newResponse = await fetch('https://nekobot.xyz/api/image?type=4k')
+			const newResponse = await fetch('https://nekobot.xyz/api/image?type=ass')
 			const newData = await newResponse.json()
 			image = newData.message
 		}
@@ -43,13 +43,13 @@ module.exports = {
 		const base64 = await getImageAsBase64(image)
 
 		const attachment = new AttachmentBuilder(Buffer.from(base64, 'base64'), {
-			name: 'boobs' + type
+			name: 'ass' + type
 		})
 
 		const embed = new EmbedBuilder()
-			.setTitle(`${client.emoji.nsfw} Imagem +18 (4K)`)
+			.setTitle(`${client.emoji.nsfw} Imagem +18 (Bunda)`)
 			.setColor('Blurple')
-			.setImage('attachment://boobs' + type)
+			.setImage('attachment://ass' + type)
 
 		const button = new ButtonBuilder()
 			.setEmoji(client.emoji.favorite.replace(/</g, '').replace(/>/g, ''))

@@ -6,6 +6,9 @@ module.exports = {
 		id: process.env.CLIENT_ID,
 	},
 	supportServer: {
+		cdn: {
+			nsfw: '1181699032377200711'
+		},
 		suggestion: {
 			channel: '1172121827187900457',
 			tagID: '1172122221251137556'

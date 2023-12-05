@@ -78,7 +78,7 @@ module.exports = {
 					return
 				}
 
-				if (command.structure?.nsfw && !message.channel.nsfw) {
+				if (command.structure?.nsfw && !message.channel.nsfw && !config.users.developers.includes(message.author.id)) {
 					await message.reply({
 						content:
               config.messageSettings.nsfwMessage !== undefined &&
